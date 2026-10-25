@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ml" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- PWA & Mobile App Meta Tags -->
+    <meta name="theme-color" content="#071b3d">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="അസ്മാഉ അഹ്‌ലി ബദ്‌ർ">
+    <title>അസ്മാഉ അഹ്‌ലി ബദ്‌റിൻ റളിയള്ളാഹു അൻഹും | Asma-u Ahli Badrin Radhiyallahu Anhum</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Malayalam:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            background: #071b3d;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(34, 211, 238, 0.18) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.20) 0px, transparent 50%);
+            background-attachment: fixed;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            padding-bottom: max(3rem, env(safe-area-inset-bottom));
+        }
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        .arabic-font {
+            font-family: 'Scheherazade New', 'Amiri', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(10, 28, 63, 0.90);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 211, 238, 0.28);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        .ring-progress {
+            transition: stroke-dashoffset 0.35s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .pulse-gold {
+            animation: goldPulse 2s infinite;
+        }
+        @keyframes goldPulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.38); }
+            70% { box-shadow: 0 0 0 15px rgba(34, 211, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+        }
+        /* Sapphire + cyan redesign */
+        body {
+            background-color: #071b3d !important;
+            background-image:
+              radial-gradient(ellipse at 12% 0%, rgba(34,211,238,.20), transparent 42%),
+              radial-gradient(ellipse at 100% 90%, rgba(99,102,241,.22), transparent 45%) !important;
+            color: #f0f9ff;
+        }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(13, 38, 83, .96), rgba(9, 25, 58, .94)) !important;
+            border: 1px solid rgba(103, 232, 249, .28) !important;
+            box-shadow: 0 18px 45px -18px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.05) !important;
+        }
+        button, input, select { font-size: max(1rem, inherit); }
+        button { touch-action: manipulation; }
+        @media (max-width: 640px) {
+            main { margin-top: 1rem !important; }
+            .glass-card { border-radius: 1.35rem !important; }
+            #single-count-display { font-size: 3.6rem !important; }
+            #single-name-heading { font-size: 2rem !important; }
+        }
+        .hidden-el { display: none !important; }
+        select, button {
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+<body class="text-slate-100 antialiased min-h-screen pb-12">
+
+    <!-- Sticky Royal Header -->
+    <header class="sticky top-0 z-30 bg-blue-950/90 backdrop-blur-md border-b border-cyan-500/30 shadow-2xl pt-[env(safe-area-inset-top)]">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="text-center sm:text-left flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-700 p-0.5 flex items-center justify-center shadow-lg shrink-0">
+                    <div class="w-full h-full bg-blue-950 rounded-full flex items-center justify-center text-cyan-300 font-bold arabic-font text-xl">
+                        ب
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold arabic-font gold-gradient-text tracking-wide">أسماء أهل بدر رضي الله عنهم</h1>
+                    <p class="text-[11px] md:text-xs text-cyan-200/80 font-light">അസ്മാഉ അഹ്‌ലി ബദ്‌റിൻ റളിയള്ളാഹു അൻഹും (<span id="connection-status">ഓഫ്‌ലൈൻ റെഡി</span>)</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-end">
+                <!-- Install App Button (Android/Desktop) -->
+                <button 
+                    id="install-btn" 
+                    onclick="app.installApp()" 
+                    class="hidden-el px-3 py-1.5 text-xs font-bold bg-cyan-400 hover:bg-cyan-300 text-slate-950 rounded-xl transition shadow-lg flex items-center gap-1 animate-bounce"
+                >
+                    📱 ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുക
+                </button>
+
+                <!-- iOS Install Instruction Button -->
+                <button 
+                    id="ios-install-btn" 
+                    onclick="app.openIosModal()" 
+                    class="hidden-el px-3 py-1.5 text-xs font-bold bg-cyan-400 hover:bg-cyan-300 text-slate-950 rounded-xl transition shadow-lg flex items-center gap-1"
+                >
+                    📱 iPhone ഹോം സ്‌ക്രീനിൽ ആക്കാൻ
+                </button>
+
+                <!-- Target Choice Button -->
+                <button 
+                    onclick="app.openTargetModal()"
+                    class="flex items-center gap-1.5 bg-blue-900/90 border border-cyan-500/40 hover:border-cyan-400 rounded-xl px-3 py-1.5 text-xs shadow-md active:scale-95 transition"
+                >
+                    <span class="text-cyan-200/85 font-medium text-[11px]">ലക്ഷ്യം:</span>
+                    <strong class="text-cyan-300 font-bold" id="header-target-label">14 ഫാത്തിഹ</strong>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <!-- Sound Toggle Button -->
+                <button 
+                    id="sound-toggle-btn"
+                    onclick="app.toggleSound()" 
+                    class="p-2 text-xs rounded-xl border border-blue-500/50 bg-blue-900/80 text-cyan-300 transition shadow-md flex items-center justify-center"
+                    title="ശബ്ദം ടോഗിൾ ചെയ്യുക"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+                </button>
+
+                <!-- Mode Toggle Button -->
+                <button 
+                    id="mode-toggle-btn"
+                    onclick="app.toggleViewMode()" 
+                    class="px-3.5 py-1.5 text-xs font-semibold bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 rounded-xl transition shadow-lg flex items-center gap-1.5 active:scale-95"
+                >
+                    എല്ലാ ലിസ്റ്റും
+                </button>
+
+                <!-- Reset Button -->
+                <button onclick="app.openResetModal()" class="px-3 py-1.5 text-xs bg-red-950/80 hover:bg-red-900 border border-red-500/40 text-red-200 rounded-xl transition shadow-md flex items-center gap-1">
+                    റിസെറ്റ്
+                </button>
+            </div>
+        </div>
+        
+        <!-- Overall Progress Bar -->
+        <div class="bg-blue-950/80 px-4 py-2 border-t border-blue-900/60">
+            <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+                <div class="flex items-center gap-4 text-blue-200/90">
+                    <span>പൂർത്തിയായവർ: <strong class="text-cyan-300 font-bold" id="completed-count-label">0</strong> / 365</span>
+                    <span>ആകെ ഫാത്തിഹ: <strong class="text-cyan-300 font-bold" id="total-fatiha-label">0</strong> / <span id="max-fatiha-label">5110</span></span>
+                </div>
+                <div class="w-full sm:w-1/3 bg-blue-900/60 rounded-full h-2.5 overflow-hidden border border-cyan-500/20 p-0.5">
+                    <div id="overall-progress-bar" class="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 mt-6">
+
+        <!-- FOCUSED SINGLE COUNTER VIEW -->
+        <div id="single-view" class="space-y-4">
+            <div class="glass-card rounded-3xl p-6 md:p-8 relative overflow-hidden">
+                
+                <div class="flex justify-between items-center mb-6">
+                    <span class="px-3.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-semibold rounded-full text-xs md:text-sm flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                        സ്വഹാബി നമ്പർ: <span id="current-id-label" class="font-bold text-cyan-200">1</span> / 365
+                    </span>
+
+                    <button 
+                        onclick="app.openJumpModal()"
+                        class="flex items-center gap-1.5 bg-blue-950/90 hover:bg-blue-900 border border-cyan-500/40 text-cyan-200 rounded-xl px-3.5 py-2 text-xs shadow-md transition active:scale-95 font-medium"
+                    >
+                        <span>പേര് ടൈപ്പ് ചെയ്ത് തിരഞ്ഞെടുക്കുക</span>
+                    </button>
+                </div>
+
+                <div class="text-center my-2">
+                    <p class="arabic-font text-cyan-400/80 text-lg md:text-xl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+                </div>
+
+                <div class="my-6 text-center">
+                    <div id="single-name-container" class="flex items-center justify-center gap-3">
+                        <h2 id="single-name-heading" class="text-3xl md:text-5xl font-bold arabic-font text-cyan-100 leading-relaxed drop-shadow-lg tracking-wide select-all" dir="rtl"></h2>
+                        <button onclick="app.startEditCurrent()" title="പേര് തിരുത്തുക" class="text-blue-400 hover:text-cyan-300 p-2 rounded-lg bg-blue-900/40 border border-blue-700/50 transition shrink-0">
+                            ✏️
+                        </button>
+                    </div>
+                    <div id="single-edit-container" class="hidden-el max-w-md mx-auto flex items-center gap-2 my-2">
+                        <input type="text" id="single-edit-input" dir="rtl" class="w-full px-4 py-2 bg-blue-950 border border-cyan-500/60 rounded-xl text-xl arabic-font text-cyan-200 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                        <button onclick="app.saveCurrentEdit()" class="px-4 py-2 bg-cyan-500 text-slate-950 text-xs rounded-xl font-bold hover:bg-cyan-400 shrink-0">സേവ്</button>
+                        <button onclick="app.cancelCurrentEdit()" class="px-3 py-2 bg-slate-800 text-slate-300 text-xs rounded-xl hover:bg-slate-700 shrink-0">റദ്ദാക്കുക</button>
+                    </div>
+                </div>
+
+                <!-- Circular Progress Ring -->
+                <div class="relative w-48 h-48 md:w-56 md:h-56 mx-auto my-6 flex items-center justify-center">
+                    <svg class="w-full h-full" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(59, 130, 246, 0.20)" stroke-width="8"/>
+                        <circle id="ring-circle" cx="50" cy="50" r="42" fill="none" stroke="url(#goldGradient)" stroke-width="8" stroke-linecap="round" class="ring-progress" stroke-dasharray="264" stroke-dashoffset="264"/>
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fef08a" />
+                                <stop offset="50%" stop-color="#f59e0b" />
+                                <stop offset="100%" stop-color="#10b981" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs uppercase tracking-widest text-blue-200/60 font-medium">ഫാത്തിഹ എണ്ണം</span>
+                        <div id="single-count-display" class="text-5xl md:text-6xl font-black tracking-tight my-1 gold-gradient-text drop-shadow-md">0</div>
+                        <span class="text-xs text-cyan-400/80 font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+                            ലക്ഷ്യം: <span id="single-target-display">14</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Main Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto my-6">
+                    <button onclick="app.decrementCurrent()" class="w-full sm:w-16 h-14 rounded-2xl border border-blue-700/50 bg-blue-950/60 hover:bg-blue-900/60 text-blue-200 font-extrabold text-2xl transition active:scale-95 shadow-lg flex items-center justify-center shrink-0">-</button>
+                    
+                    <button onclick="app.incrementCurrent()" class="w-full flex-1 h-16 rounded-2xl bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-slate-950 font-black text-xl flex items-center justify-center gap-2 shadow-xl shadow-cyan-500/20 active:scale-95 transition-all pulse-gold">
+                        +1 ഫാത്തിഹ ഓതി
+                    </button>
+
+                    <button id="single-complete-btn" onclick="app.toggleCompleteCurrent()" class="w-full sm:w-auto px-4 h-14 rounded-2xl border text-xs font-bold transition flex items-center justify-center shrink-0 active:scale-95 shadow-lg bg-blue-950/60 text-cyan-300 border-cyan-500/30">
+                        പൂർത്തിയാക്കുക
+                    </button>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-between border-t border-blue-800/40 pt-5 mt-4">
+                    <button onclick="app.prevPerson()" class="px-5 py-3 bg-blue-950/80 hover:bg-blue-900/90 text-blue-200 border border-blue-700/40 rounded-2xl font-semibold text-xs sm:text-sm transition flex items-center gap-2 active:scale-95 shadow-md">
+                        മുൻപത്തെയാൾ
+                    </button>
+                    <span class="text-[11px] text-blue-200/50 font-medium hidden sm:inline">കീബോർഡ് Left/Right അമ്പടയാളങ്ങളും ഉപയോഗിക്കാം</span>
+                    <button onclick="app.nextPerson()" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 rounded-2xl font-extrabold text-xs sm:text-sm transition flex items-center gap-2 shadow-lg active:scale-95">
+                        അടുത്തയാൾ
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FULL LIST VIEW -->
+        <div id="list-view" class="space-y-4 hidden-el">
+            <div class="glass-card p-4 rounded-2xl flex flex-col sm:flex-row gap-3 justify-between items-center">
+                <div class="relative w-full sm:w-80">
+                    <input type="text" id="list-search-input" oninput="app.handleSearchInput(this.value)" placeholder="പേര് തിരയുക (Search)..." class="w-full pl-9 pr-4 py-2.5 bg-blue-950/80 border border-blue-700/50 text-cyan-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 placeholder-blue-300/40">
+                </div>
+                <div class="flex bg-blue-950/80 p-1 rounded-xl text-xs font-semibold w-full sm:w-auto border border-blue-800/40">
+                    <button onclick="app.setFilter('all')" id="filter-btn-all" class="flex-1 sm:flex-initial px-3.5 py-1.5 rounded-lg bg-cyan-500 text-slate-950 shadow-md font-bold transition">എല്ലാം</button>
+                    <button onclick="app.setFilter('pending')" id="filter-btn-pending" class="flex-1 sm:flex-initial px-3.5 py-1.5 rounded-lg text-blue-200/70 hover:text-cyan-200 transition">ബാക്കി</button>
+                    <button onclick="app.setFilter('completed')" id="filter-btn-completed" class="flex-1 sm:flex-initial px-3.5 py-1.5 rounded-lg text-blue-200/70 hover:text-cyan-200 transition">പൂർത്തിയായവ</button>
+                </div>
+            </div>
+
+            <div id="list-container" class="space-y-3">
+                <!-- Dynamically populated list items -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Contact -->
+    <footer class="max-w-4xl mx-auto px-4 mt-8 text-center">
+        <div class="glass-card rounded-2xl p-4 max-w-md mx-auto border border-cyan-500/30 shadow-lg">
+            <p class="text-blue-200/90 text-xs md:text-sm">
+                <span>ഫോൺ: <a href="tel:9846494873" class="text-cyan-300 font-bold underline hover:text-cyan-200 tracking-wider">9846494873</a></span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Instant Jump Modal -->
+    <div id="jump-modal" class="hidden-el fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card rounded-3xl p-5 max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl border border-cyan-500/40">
+            <div class="flex justify-between items-center mb-3 pb-2 border-b border-blue-800/50">
+                <h3 class="text-sm md:text-base font-bold text-cyan-300">സ്വഹാബിയെ ടൈപ്പ് ചെയ്ത് കണ്ടെത്തുക (1 - 365)</h3>
+                <button onclick="app.closeJumpModal()" class="text-slate-400 hover:text-white p-1">✕</button>
+            </div>
+            <div class="relative mb-3">
+                <input id="jump-search-input" type="text" oninput="app.handleJumpSearch(this.value)" placeholder="പേരോ നമ്പറോ ടൈപ്പ് ചെയ്യുക..." class="w-full px-4 py-3 bg-blue-950 border border-cyan-500/60 text-cyan-100 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+            </div>
+            <div id="jump-list-container" class="overflow-y-auto flex-1 space-y-1.5 pr-1 divide-y divide-blue-900/40"></div>
+        </div>
+    </div>
+
+    <!-- Target Choice Modal -->
+    <div id="target-modal" class="hidden-el fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-cyan-500/40 text-center space-y-4">
+            <h3 class="text-base font-bold text-cyan-300">ലക്ഷ്യം ഫാത്തിഹ എണ്ണം തിരഞ്ഞെടുക്കുക</h3>
+            <div class="grid grid-cols-2 gap-2.5 pt-2">
+                <button onclick="app.setTarget(3)" class="py-3 px-4 rounded-xl border text-sm transition font-bold bg-blue-950 text-cyan-200 border-cyan-500/30">3 ഫാത്തിഹ</button>
+                <button onclick="app.setTarget(7)" class="py-3 px-4 rounded-xl border text-sm transition font-bold bg-blue-950 text-cyan-200 border-cyan-500/30">7 ഫാത്തിഹ</button>
+                <button onclick="app.setTarget(14)" class="py-3 px-4 rounded-xl border text-sm transition font-bold bg-blue-950 text-cyan-200 border-cyan-500/30">14 ഫാത്തിഹ</button>
+                <button onclick="app.setTarget(21)" class="py-3 px-4 rounded-xl border text-sm transition font-bold bg-blue-950 text-cyan-200 border-cyan-500/30">21 ഫാത്തിഹ</button>
+                <button onclick="app.setTarget(40)" class="py-3 px-4 rounded-xl border text-sm transition font-bold bg-blue-950 text-cyan-200 border-cyan-500/30 col-span-2">40 ഫാത്തിഹ</button>
+            </div>
+            <button onclick="app.closeTargetModal()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl mt-2">അടയ്ക്കുക</button>
+        </div>
+    </div>
+
+    <!-- Reset Modal -->
+    <div id="reset-modal" class="hidden-el fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card rounded-3xl p-6 max-w-md w-full shadow-2xl border border-cyan-500/40">
+            <h3 class="text-lg font-bold text-cyan-200 mb-2">കൗണ്ടർ റിസെറ്റ് ചെയ്യണോ?</h3>
+            <p class="text-xs text-blue-100/80 mb-6">എല്ലാ ആളുകളുടെയും ഫാത്തിഹ എണ്ണം 0 ആയി മാറുന്നതാണ്.</p>
+            <div class="flex justify-end gap-3">
+                <button onclick="app.closeResetModal()" class="px-4 py-2 bg-slate-800 text-slate-300 text-xs font-bold rounded-xl">റദ്ദാക്കുക</button>
+                <button onclick="app.confirmReset()" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-xl">അതെ, റിസെറ്റ് ചെയ്യുക</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- iOS Install Modal -->
+    <div id="ios-modal" class="hidden-el fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card rounded-3xl p-6 max-w-md w-full shadow-2xl border border-cyan-500/40 text-center space-y-4">
+            <h3 class="text-lg font-bold text-cyan-300">iPhone-ൽ ആപ്പായി ഉപയോഗിക്കാൻ:</h3>
+            <div class="text-xs text-blue-100/90 text-right space-y-2 bg-blue-950/60 p-4 rounded-2xl border border-blue-800/50" dir="ltr">
+                <p>1. Safari ബ്രൗസറിന്റെ താഴെയുള്ള <strong class="text-cyan-300">Share</strong> ബട്ടൺ അമർത്തുക.</p>
+                <p>2. ലിസ്റ്റിൽ നിന്ന് <strong class="text-cyan-300">'Add to Home Screen'</strong> തിരഞ്ഞെടുക്കുക.</p>
+                <p>3. മുകളിൽ വലതുഭാഗത്തുള്ള <strong class="text-cyan-300">'Add'</strong> ബട്ടൺ അമർത്തുക.</p>
+            </div>
+            <button onclick="app.closeIosModal()" class="w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold rounded-xl shadow-lg">മനസ്സിലായി</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast-el" class="hidden-el fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-2xl shadow-2xl font-bold text-xs sm:text-sm flex items-center gap-2">
+        <span id="toast-text"></span>
+    </div>
+
+    <script>
+        // Automatic Offline Service Worker registration
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                const CACHE_NAME = 'badr-fatiha-cache-v2';
+                const urlsToCache = ['./', './index.html'];
+                self.addEventListener('install', event => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+                    );
+                });
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request).then(response => {
+                            return response || fetch(event.request).catch(() => caches.match('./'));
+                        })
+                    );
+                });
+            `;
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(err => console.log('SW registration failed', err));
+        }
+
+        const initialRawNames = [
+            "سيدنا محمد رسول الله صلى الله عليه وسلم", "سيدنا ابو بكر الصديق رضي الله عنه", "سيدنا عمر بن الخطاب رضي الله عنه", "سيدنا عثمان بن عفان رضي الله عنه", "سيدنا علي بن ابي طالب رضي الله عنه", "سيدنا طلحة بن عبيد الله رضي الله عنه", "سيدنا الزبير بن العوام رضي الله عنه", "سيدنا سعد بن ابي وقاص رضي الله عنه", "سيدنا سعيد بن زيد رضي الله عنه", "سيدنا عبد الرحمن بن عوف رضي الله عنه", "سيدنا ابو عبيدة عامر بن الجراح رضي الله عنه", "سيدنا الاخنس رضي الله عنه", "سيدنا الارقم رضي الله عنه", "سيدنا اسعد رضي الله عنه", "سيدنا انس رضي الله عنه", "سيدنا انسة رضي الله عنه", "سيدنا انيس رضي الله عنه", "سيدنا اوس (1) رضي الله عنه", "سيدنا اوس (2) رضي الله عنه", "سيدنا اياس (1) رضي الله عنه", "سيدنا اياس (2) رضي الله عنه", "سيدنا بجير رضي الله عنه", "سيدنا بحاث رضي الله عنه", "سيدنا البراء رضي الله عنه", "سيدنا بسبسة رضي الله عنه", "سيدنا بشر رضي الله عنه", "سيدنا بشير رضي الله عنه", "سيدنا بلال رضي الله عنه", "سيدنا تميم (1) رضي الله عنه", "سيدنا تميم (2) رضي الله عنه", "سيدنا تميم (3) رضي الله عنه", "سيدنا ثابت (1) رضي الله عنه", "سيدنا ثابت (2) رضي الله عنه", "سيدنا ثابت (3) رضي الله عنه", "سيدنا ثابت (4) رضي الله عنه", "سيدنا ثابت (5) رضي الله عنه", "سيدنا ثعلبة (1) رضي الله عنه", "سيدنا ثعلبة (2) رضي الله عنه", "سيدنا ثعلبة (3) رضي الله عنه", "سيدنا ثقف رضي الله عنه", "سيدنا جابر (1) رضي الله عنه", "سيدنا جابر (2) رضي الله عنه", "سيدنا جبار رضي الله عنه", "سيدنا جبر رضي الله عنه", "سيدنا جبير رضي الله عنه", "سيدنا الحارث (1) رضي الله عنه", "سيدنا الحارث (2) رضي الله عنه", "سيدنا الحارث (3) رضي الله عنه", "سيدنا الحارث (4) رضي الله عنه", "سيدنا الحارث (5) رضي الله عنه", "سيدنا الحارث (6) رضي الله عنه", "سيدنا الحارث (7) رضي الله عنه", "سيدنا الحارث (8) رضي الله عنه", "سيدنا الحارث (9) رضي الله عنه", "سيدنا الحارث (10) رضي الله عنه", "سيدنا الحارث (11) رضي الله عنه", "سيدنا حارثة (1) رضي الله عنه", "سيدنا حارثة (2) رضي الله عنه", "سيدنا حاطب (1) رضي الله عنه", "سيدنا حاطب (2) رضي الله عنه", "سيدنا حباب رضي الله عنه", "سيدنا حبيب رضي الله عنه", "سيدنا حرام رضي الله عنه", "سيدنا حريث رضي الله عنه", "سيدنا حصين رضي الله عنه", "سيدنا حمزة (1) رضي الله عنه", "سيدنا حمزة (2) رضي الله عنه", "سيدنا خارجة رضي الله عنه", "سيدنا خالد (1) رضي الله عنه", "سيدنا خالد (2) رضي الله عنه", "سيدنا خباب (1) رضي الله عنه", "سيدنا خباب (2) رضي الله عنه", "سيدنا خبيب رضي الله عنه", "سيدنا خداش رضي الله عنه", "سيدنا خراش رضي الله عنه", "سيدنا خريم رضي الله عنه", "سيدنا خلاد (1) رضي الله عنه", "سيدنا خلاد (2) رضي الله عنه", "سيدنا خلاد (3) رضي الله عنه", "سيدنا خلاد (4) رضي الله عنه", "سيدنا خويلد رضي الله عنه", "سيدنا خليفة رضي الله عنه", "سيدنا خنيس رضي الله عنه", "سيدنا خوات رضي الله عنه", "سيدنا خولي رضي الله عنه", "سيدنا ودقة بن اياس رضي الله عنه", "سيدنا ذكوان رضي الله عنه", "سيدنا ذو الشمالين رضي الله عنه", "سيدنا راشد رضي الله عنه", "سيدنا رافع (1) رضي الله عنه", "سيدنا رافع (2) رضي الله عنه", "سيدنا رافع (3) رضي الله عنه", "سيدنا رافع (4) رضي الله عنه", "سيدنا رافع (5) رضي الله عنه", "سيدنا ربعي رضي الله عنه", "سيدنا الربيع رضي الله عنه", "سيدنا ربيعة رضي الله عنه", "سيدنا رخيلة رضي الله عنه", "سيدنا رفاعة (1) رضي الله عنه", "سيدنا رفاعة (2) رضي الله عنه", "سيدنا رفاعة (3) رضي الله عنه", "سيدنا رفاعة (4) رضي الله عنه", "سيدنا زياد (1) رضي الله عنه", "سيدنا زياد (2) رضي الله عنه", "سيدنا زياد (3) رضي الله عنه", "سيدنا زيد (1) رضي الله عنه", "سيدنا زيد (2) رضي الله عنه", "سيدنا زيد (3) رضي الله عنه", "سيدنا زيد (4) رضي الله عنه", "سيدنا زيد (5) رضي الله عنه", "سيدنا زيد (6) رضي الله عنه", "سيدنا سالم (1) رضي الله عنه", "سيدنا سالم (2) رضي الله عنه", "سيدنا السائب رضي الله عنه", "سيدنا سبرة رضي الله عنه", "سيدنا سراقة (1) رضي الله عنه", "سيدنا سراقة (2) رضي الله عنه", "سيدنا سعد (1) رضي الله عنه", "سيدنا سعد (2) رضي الله عنه", "سيدنا سعد (3) رضي الله عنه", "سيدنا سعد (4) رضي الله عنه", "سيدنا سعد (5) رضي الله عنه", "سيدنا سعد (6) رضي الله عنه", "سيدنا سعد (7) رضي الله عنه", "سيدنا سعد (8) رضي الله عنه", "سيدنا سعد (9) رضي الله عنه", "سيدنا سعد (10) رضي الله عنه", "سيدنا سعد (11) رضي الله عنه", "سيدنا سفيان رضي الله عنه", "سيدنا سلمة (1) رضي الله عنه", "سيدنا سلمة (2) رضي الله عنه", "سيدنا سلمة (3) رضي الله عنه", "سيدنا سليط رضي الله عنه", "سيدنا سليم (1) رضي الله عنه", "سيدنا سليم (2) رضي الله عنه", "سيدنا سليم (3) رضي الله عنه", "سيدنا سليم (4) رضي الله عنه", "سيدنا سماك رضي الله عنه", "سيدنا سنان (1) رضي الله عنه", "سيدنا سنان (2) رضي الله عنه", "سيدنا سهل (1) رضي الله عنه", "سيدنا سهل (2) رضي الله عنه", "سيدنا سهل (3) رضي الله عنه", "سيدنا سهل (4) رضي الله عنه", "سيدنا سهيل (1) رضي الله عنه", "سيدنا سهيل (2) رضي الله عنه", "سيدنا سواد (1) رضي الله عنه", "سيدنا سواد (2) رضي الله عنه", "سيدنا سويبط رضي الله عنه", "سيدنا شجاع رضي الله عنه", "سيدنا شريك رضي الله عنه", "سيدنا شماس رضي الله عنه", "سيدنا صبيح رضي الله عنه", "سيدنا صفوان رضي الله عنه", "سيدنا صيفي رضي الله عنه", "سيدنا صهيب رضي الله عنه", "سيدنا الضحاك (1) رضي الله عنه", "سيدنا الضحاك (2) رضي الله عنه", "سيدنا ضمرة رضي الله عنه", "سيدنا الطفيل (1) رضي الله عنه", "سيدنا الطفيل (2) رضي الله عنه", "سيدنا الطفيل (3) رضي الله عنه", "سيدنا طلييب رضي الله عنه", "سيدنا ظهير بن رافع بن عدي رضي الله عنه", "سيدنا عاصم (1) رضي الله عنه", "سيدنا عاصم (2) رضي الله عنه", "سيدنا عاصم (3) رضي الله عنه", "سيدنا عاصم (4) رضي الله عنه", "سيدنا عاقل رضي الله عنه", "سيدنا عامر (1) رضي الله عنه", "سيدنا عامر (2) رضي الله عنه", "سيدنا عامر (3) رضي الله عنه", "سيدنا عامر (4) رضي الله عنه", "سيدنا عامر (5) رضي الله عنه", "سيدنا عامر (6) رضي الله عنه", "سيدنا عامر (7) رضي الله عنه", "سيدنا عامر (8) رضي الله عنه", "سيدنا عباد (1) رضي الله عنه", "سيدنا عباد (2) رضي الله عنه", "سيدنا عبادة رضي الله عنه", "سيدنا عبد الله (1) رضي الله عنه", "سيدنا عبد الله (2) رضي الله عنه", "سيدنا عبد الله (3) رضي الله عنه", "سيدنا عبد الله (4) رضي الله عنه", "سيدنا عبد الله (5) رضي الله عنه", "سيدنا عبد الله (6) رضي الله عنه", "سيدنا عبد الله (7) رضي الله عنه", "سيدنا عبد الله (8) رضي الله عنه", "سيدنا عبد الله (9) رضي الله عنه", "سيدنا عبد الله (10) رضي الله عنه", "سيدنا عبد الله (11) رضي الله عنه", "سيدنا عبد الله (12) رضي الله عنه", "سيدنا عبد الله (13) رضي الله عنه", "سيدنا عبد الله (14) رضي الله عنه", "سيدنا عبد الله (15) رضي الله عنه", "سيدنا عبد الله (16) رضي الله عنه", "سيدنا عبد الله (17) رضي الله عنه", "سيدنا عبد الله (18) رضي الله عنه", "سيدنا عبد الله (19) رضي الله عنه", "سيدنا عبد الله (20) رضي الله عنه", "سيدنا عبد الله (21) رضي الله عنه", "سيدنا عبد الله (22) رضي الله عنه", "سيدنا عبد الله (23) رضي الله عنه", "سيدنا عبد الله (24) رضي الله عنه", "سيدنا عبد الله (25) رضي الله عنه", "سيدنا عبد الله (26) رضي الله عنه", "سيدنا عبد الرحمن رضي الله عنه", "سيدنا عبد ربه رضي الله عنه", "سيدنا عبدة رضي الله عنه", "سيدنا عبس رضي الله عنه", "سيدنا عائذ رضي الله عنه", "سيدنا عبيد (1) رضي الله عنه", "سيدنا عبيد (2) رضي الله عنه", "سيدنا عبيد (3) رضي الله عنه", "سيدنا عبيد (4) رضي الله عنه", "سيدنا عبيدة رضي الله عنه", "سيدنا عتبان رضي الله عنه", "سيدنا عتبة (1) رضي الله عنه", "سيدنا عتبة (2) رضي الله عنه", "سيدنا عتبة (3) رضي الله عنه", "سيدنا عثمان رضي الله عنه", "سيدنا العجلان رضي الله عنه", "سيدنا عدي رضي الله عنه", "سيدنا عصمة رضي الله عنه", "سيدنا عصيمة رضي الله عنه", "سيدنا عطية رضي الله عنه", "سيدنا عقبة (1) رضي الله عنه", "سيدنا عقبة (2) رضي الله عنه", "سيدنا عقبة (3) رضي الله عنه", "سيدنا عقبة (4) رضي الله عنه", "سيدنا عكاشة رضي الله عنه", "سيدنا عمار رضي الله عنه", "سيدنا عمارة (1) رضي الله عنه", "سيدنا عمارة (2) رضي الله عنه", "سيدنا عمرو (1) رضي الله عنه", "سيدنا عمرو (2) رضي الله عنه", "سيدنا عمرو (3) رضي الله عنه", "سيدنا عمرو (4) رضي الله عنه", "سيدنا عمرو (5) رضي الله عنه", "سيدنا عمرو (6) رضي الله عنه", "سيدنا عمرو (7) رضي الله عنه", "سيدنا عمرو (8) رضي الله عنه", "سيدنا عمرو (9) رضي الله عنه", "سيدنا عمرو (10) رضي الله عنه", "سيدنا عمرو (11) رضي الله عنه", "سيدنا عمير (1) رضي الله عنه", "سيدنا عمير (2) رضي الله عنه", "سيدنا عمير (3) رضي الله عنه", "سيدنا عمير (4) رضي الله عنه", "سيدنا عمير (5) رضي الله عنه", "سيدنا عوف رضي الله عنه", "سيدنا عويم رضي الله عنه", "سيدنا عياض رضي الله عنه", "سيدنا غنام رضي الله عنه", "سيدنا الفاكه رضي الله عنه", "سيدنا فروة رضي الله عنه", "سيدنا قتادة رضي الله عنه", "سيدنا قدامة رضي الله عنه", "سيدنا قطبة رضي الله عنه", "سيدنا قيس (1) رضي الله عنه", "سيدنا قيس (2) رضي الله عنه", "سيدنا قيس (3) رضي الله عنه", "سيدنا كعب (1) رضي الله عنه", "سيدنا كعب (2) رضي الله عنه", "سيدنا لبدة رضي الله عنه", "سيدنا مالك (1) رضي الله عنه", "سيدنا مالك (2) رضي الله عنه", "سيدنا مالك (3) رضي الله عنه", "سيدنا مالك (4) رضي الله عنه", "سيدنا مالك (5) رضي الله عنه", "سيدنا مالك (6) رضي الله عنه", "سيدنا مالك (7) رضي الله عنه", "سيدنا مالك (8) رضي الله عنه", "سيدنا مبشر رضي الله عنه", "سيدنا مجذر رضي الله عنه", "سيدنا محرر رضي الله عنه", "سيدنا محرز رضي الله عنه", "سيدنا محمد رضي الله عنه", "سيدنا مدلاج رضي الله عنه", "سيدنا مرثد رضي الله عنه", "سيدنا مسطح رضي الله عنه", "سيدنا مسعود (1) رضي الله عنه", "سيدنا مسعود (2) رضي الله عنه", "سيدنا مسعود (3) رضي الله عنه", "سيدنا مسعود (4) رضي الله عنه", "سيدنا مسعود (5) رضي الله عنه", "سيدنا مسعود (6) رضي الله عنه", "سيدنا مصعب رضي الله عنه", "سيدنا معاذ (1) رضي الله عنه", "سيدنا معاذ (2) رضي الله عنه", "سيدنا معاذ (3) رضي الله عنه", "سيدنا معاذ (4) رضي الله عنه", "سيدنا معاذ (5) رضي الله عنه", "سيدنا معبد (1) رضي الله عنه", "سيدنا معبد (2) رضي الله عنه", "سيدنا معتب (1) رضي الله عنه", "سيدنا معتب (2) رضي الله عنه", "سيدنا معتب (3) رضي الله عنه", "سيدنا معقل رضي الله عنه", "سيدنا معمر رضي الله عنه", "سيدنا معن (1) رضي الله عنه", "سيدنا معن (2) رضي الله عنه", "سيدنا معوذ (1) رضي الله عنه", "سيدنا معوذ (2) رضي الله عنه", "سيدنا المقداد رضي الله عنه", "سيدنا مليل رضي الله عنه", "سيدنا المنذر (1) رضي الله عنه", "سيدنا المنذر (2) رضي الله عنه", "سيدنا المنذر (3) رضي الله عنه", "سيدنا مهجع رضي الله عنه", "سيدنا نضر رضي الله عنه", "سيدنا النعمان (1) رضي الله عنه", "سيدنا النعمان (2) رضي الله عنه", "سيدنا النعمان (3) رضي الله عنه", "سيدنا النعمان (4) رضي الله عنه", "سيدنا النعمان (5) رضي الله عنه", "سيدنا النعمان (6) رضي الله عنه", "سيدنا النعمان (7) رضي الله عنه", "سيدنا نعيمان رضي الله عنه", "سيدنا نوفل رضي الله عنه", "سيدنا هانئ رضي الله عنه", "سيدنا هبيل رضي الله عنه", "سيدنا هلال رضي الله عنه", "سيدنا واقد رضي الله عنه", "سيدنا ودقة رضي الله عنه", "سيدنا وديعة رضي الله عنه", "سيدنا وهب (1) رضي الله عنه", "سيدنا وهب (2) رضي الله عنه", "سيدنا يزيد (1) رضي الله عنه", "سيدنا يزيد (2) رضي الله عنه", "سيدنا يزيد (3) رضي الله عنه", "سيدنا يزيد (4) رضي الله عنه", "سيدنا يزيد (5) رضي الله عنه", "سيدنا يزيد (6) رضي الله عنه", "سيدنا ابو أيوب رضي الله عنه", "سيدنا ابو الأعور رضي الله عنه", "سيدنا ابو حبة رضي الله عنه", "سيدنا ابو حثة رضي الله عنه", "سيدنا ابو حبيب رضي الله عنه", "سيدنا ابو حذيفة رضي الله عنه", "سيدنا ابو حسن رضي الله عنه", "سيدنا ابو خارجة رضي الله عنه", "سيدنا ابو خلاد رضي الله عنه", "سيدنا ابو خزيمة رضي الله عنه", "سيدنا ابو داود رضي الله عنه", "سيدنا ابو دجانة رضي الله عنه", "سيدنا ابو سبرة رضي الله عنه", "سيدنا ابو سليط رضي الله عنه", "سيدنا ابو سلمة رضي الله عنه", "سيدنا ابو سنان رضي الله عنه", "سيدنا ابو شيخ رضي الله عنه", "سيدنا ابو صرمة رضي الله عنه", "سيدنا ابو ضياح رضي الله عنه", "سيدنا ابو طلحة رضي الله عنه", "سيدنا ابو عقيل رضي الله عنه", "سيدنا ابو قتادة رضي الله عنه", "Sydna Abu Kabsha Radiyallahu Anhu", "سيدنا ابو لبابة رضي الله عنه", "سيدنا ابو مخشي رضي الله عنه", "سيدنا ابو مرثد رضي الله عنه", "سيدنا ابو مسعود رضي الله عنه", "سيدنا ابو مليل رضي الله عنه", "سيدنا ابو الهيثم رضي الله عنه", "سيدنا ابو اليسر رضي الله عنه"
+        ];
+
+        class BadrCounterApp {
+            constructor() {
+                this.items = [];
+                this.targetPerPerson = 14;
+                this.currentIndex = 0;
+                this.viewMode = 'single'; // 'single' or 'list'
+                this.filter = 'all'; // 'all', 'pending', 'completed'
+                this.searchQuery = '';
+                this.soundEnabled = true;
+                this.editingId = null;
+                this.deferredPrompt = null;
+                this.isIOS = false;
+
+                this.initApp();
+            }
+
+            initApp() {
+                this.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    this.deferredPrompt = e;
+                    document.getElementById('install-btn').classList.remove('hidden-el');
+                });
+
+                if (this.isIOS) {
+                    // Check if already in standalone mode
+                    if (!window.navigator.standalone) {
+                        document.getElementById('ios-install-btn').classList.remove('hidden-el');
+                    }
+                }
+
+                try {
+                    const saved = localStorage.getItem('badr_vanilla_data_v2');
+                    const savedTarget = localStorage.getItem('badr_vanilla_target');
+                    const savedIndex = localStorage.getItem('badr_vanilla_index');
+
+                    if (saved) {
+                        this.items = JSON.parse(saved);
+                    } else {
+                        this.loadDefaults();
+                    }
+
+                    if (savedTarget) this.targetPerPerson = parseInt(savedTarget) || 14;
+                    if (savedIndex) this.currentIndex = parseInt(savedIndex) || 0;
+                } catch(e) {
+                    this.loadDefaults();
+                }
+
+                this.bindEvents();
+                this.render();
+            }
+
+            installApp() {
+                if (this.deferredPrompt) {
+                    this.deferredPrompt.prompt();
+                    this.deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            this.showToast('ആപ്പ് വിജയകരമായി ഇൻസ്റ്റാൾ ചെയ്തു!');
+                        }
+                        this.deferredPrompt = null;
+                        document.getElementById('install-btn').classList.add('hidden-el');
+                    });
+                }
+            }
+
+            openIosModal() { document.getElementById('ios-modal').classList.remove('hidden-el'); }
+            closeIosModal() { document.getElementById('ios-modal').classList.add('hidden-el'); }
+
+            loadDefaults() {
+                this.items = initialRawNames.map((name, idx) => ({
+                    id: idx + 1,
+                    name: name,
+                    count: 0
+                }));
+                this.save();
+            }
+
+            save() {
+                try {
+                    localStorage.setItem('badr_vanilla_data_v2', JSON.stringify(this.items));
+                    localStorage.setItem('badr_vanilla_target', this.targetPerPerson);
+                    localStorage.setItem('badr_vanilla_index', this.currentIndex);
+                } catch(e) {}
+            }
+
+            bindEvents() {
+                window.addEventListener('keydown', (e) => {
+                    if (this.viewMode !== 'single' || this.editingId !== null) return;
+                    if (e.key === 'ArrowRight') this.nextPerson();
+                    else if (e.key === 'ArrowLeft') this.prevPerson();
+                    else if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        this.incrementCurrent();
+                    }
+                });
+            }
+
+            playSound() {
+                if (!this.soundEnabled) return;
+                try {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioContext) return;
+                    const ctx = new AudioContext();
+                    const now = ctx.currentTime;
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.frequency.setValueAtTime(587.33, now);
+                    osc.frequency.setValueAtTime(880, now + 0.1);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.6);
+                } catch(e) {}
+            }
+
+            speakCompletion() {
+                if (!this.soundEnabled || !('speechSynthesis' in window)) return;
+                try {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(
+                        `ഈ സ്വഹാബിയുടെ പേരിലുള്ള ${this.targetPerPerson} ഫാതിഹ ഓതിക്കഴിഞ്ഞു.`
+                    );
+                    utterance.lang = 'ml-IN';
+                    utterance.rate = 0.82;
+                    utterance.pitch = 1.0;
+                    utterance.volume = 1.0;
+                    const voices = window.speechSynthesis.getVoices();
+                    const malayalamVoice = voices.find(v => /^ml([-_]|$)/i.test(v.lang) || /Malayalam/i.test(v.name));
+                    if (malayalamVoice) utterance.voice = malayalamVoice;
+                    window.speechSynthesis.speak(utterance);
+                } catch (e) {}
+            }
+
+            showToast(msg) {
+                const toast = document.getElementById('toast-el');
+                const text = document.getElementById('toast-text');
+                text.textContent = msg;
+                toast.classList.remove('hidden-el');
+                setTimeout(() => toast.classList.add('hidden-el'), 2200);
+            }
+
+            haptic() {
+                if ('vibrate' in navigator) {
+                    try { navigator.vibrate(30); } catch(e) {}
+                }
+            }
+
+            nextPerson() {
+                this.currentIndex = (this.currentIndex + 1) % this.items.length;
+                this.editingId = null;
+                this.save();
+                this.render();
+            }
+
+            prevPerson() {
+                this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+                this.editingId = null;
+                this.save();
+                this.render();
+            }
+
+            selectPerson(id) {
+                const idx = this.items.findIndex(i => i.id === id);
+                if (idx !== -1) {
+                    this.currentIndex = idx;
+                    this.viewMode = 'single';
+                    this.editingId = null;
+                    this.save();
+                    this.render();
+                }
+            }
+
+            incrementCurrent() {
+                const item = this.items[this.currentIndex];
+                if (item) {
+                    item.count++;
+                    this.haptic();
+                    this.save();
+                    if (item.count >= this.targetPerPerson) {
+                        this.playSound();
+                        this.speakCompletion();
+                        this.showToast(`${this.targetPerPerson} ഫാത്തിഹ പൂർത്തിയായി! അടുത്ത ആളിലേക്ക്...`);
+                        setTimeout(() => this.nextPerson(), 400);
+                    } else {
+                        this.renderSingle();
+                    }
+                }
+            }
+
+            decrementCurrent() {
+                const item = this.items[this.currentIndex];
+                if (item && item.count > 0) {
+                    item.count--;
+                    this.haptic();
+                    this.save();
+                    this.renderSingle();
+                }
+            }
+
+            toggleCompleteCurrent() {
+                const item = this.items[this.currentIndex];
+                if (item) {
+                    if (item.count >= this.targetPerPerson) {
+                        item.count = 0;
+                    } else {
+                        item.count = this.targetPerPerson;
+                        this.playSound();
+                        this.speakCompletion();
+                        this.showToast(`${this.targetPerPerson} ഫാത്തിഹ പൂർത്തിയായി!`);
+                        setTimeout(() => this.nextPerson(), 400);
+                    }
+                    this.save();
+                    this.renderSingle();
+                }
+            }
+
+            incrementItem(id) {
+                const item = this.items.find(i => i.id === id);
+                if (item) {
+                    item.count++;
+                    this.haptic();
+                    this.save();
+                    if (item.count >= this.targetPerPerson) {
+                        this.playSound();
+                        this.speakCompletion();
+                    }
+                    this.renderList();
+                }
+            }
+
+            decrementItem(id) {
+                const item = this.items.find(i => i.id === id);
+                if (item && item.count > 0) {
+                    item.count--;
+                    this.haptic();
+                    this.save();
+                    this.renderList();
+                }
+            }
+
+            toggleCompleteItem(id) {
+                const item = this.items.find(i => i.id === id);
+                if (item) {
+                    if (item.count >= this.targetPerPerson) item.count = 0;
+                    else {
+                        item.count = this.targetPerPerson;
+                        this.playSound();
+                        this.speakCompletion();
+                    }
+                    this.save();
+                    this.renderList();
+                }
+            }
+
+            startEditCurrent() {
+                this.editingId = this.items[this.currentIndex].id;
+                document.getElementById('single-name-container').classList.add('hidden-el');
+                document.getElementById('single-edit-container').classList.remove('hidden-el');
+                const input = document.getElementById('single-edit-input');
+                input.value = this.items[this.currentIndex].name;
+                input.focus();
+            }
+
+            cancelCurrentEdit() {
+                this.editingId = null;
+                document.getElementById('single-name-container').classList.remove('hidden-el');
+                document.getElementById('single-edit-container').classList.add('hidden-el');
+            }
+
+            saveCurrentEdit() {
+                const val = document.getElementById('single-edit-input').value.trim();
+                if (val) {
+                    this.items[this.currentIndex].name = val;
+                    this.save();
+                }
+                this.cancelCurrentEdit();
+                this.renderSingle();
+            }
+
+            startEditItem(id) {
+                this.editingId = id;
+                this.renderList();
+            }
+
+            saveItemEdit(id, val) {
+                const item = this.items.find(i => i.id === id);
+                if (item && val.trim()) {
+                    item.name = val.trim();
+                    this.save();
+                }
+                this.editingId = null;
+                this.renderList();
+            }
+
+            openJumpModal() {
+                document.getElementById('jump-modal').classList.remove('hidden-el');
+                document.getElementById('jump-search-input').value = '';
+                this.renderJumpList('');
+                setTimeout(() => document.getElementById('jump-search-input').focus(), 100);
+            }
+            closeJumpModal() { document.getElementById('jump-modal').classList.add('hidden-el'); }
+            
+            openTargetModal() { document.getElementById('target-modal').classList.remove('hidden-el'); }
+            closeTargetModal() { document.getElementById('target-modal').classList.add('hidden-el'); }
+            setTarget(val) {
+                this.targetPerPerson = val;
+                this.save();
+                this.closeTargetModal();
+                this.render();
+                this.showToast(`ലക്ഷ്യം ${val} ഫാത്തിഹയായി മാറ്റി!`);
+            }
+
+            openResetModal() { document.getElementById('reset-modal').classList.remove('hidden-el'); }
+            closeResetModal() { document.getElementById('reset-modal').classList.add('hidden-el'); }
+            confirmReset() {
+                this.items.forEach(i => i.count = 0);
+                this.save();
+                this.closeResetModal();
+                this.render();
+                this.showToast('എല്ലാ കൗണ്ടറുകളും റിസെറ്റ് ചെയ്തു!');
+            }
+
+            toggleSound() {
+                this.soundEnabled = !this.soundEnabled;
+                const btn = document.getElementById('sound-toggle-btn');
+                btn.className = this.soundEnabled 
+                    ? 'p-2 text-xs rounded-xl border border-blue-500/50 bg-blue-900/80 text-cyan-300 transition shadow-md flex items-center justify-center'
+                    : 'p-2 text-xs rounded-xl border border-slate-700 bg-slate-900/80 text-slate-400 transition shadow-md flex items-center justify-center';
+            }
+
+            toggleViewMode() {
+                this.viewMode = this.viewMode === 'single' ? 'list' : 'single';
+                const btn = document.getElementById('mode-toggle-btn');
+                btn.textContent = this.viewMode === 'single' ? 'എല്ലാ ലിസ്റ്റും' : 'കൗണ്ടർ വ്യൂ';
+                this.render();
+            }
+
+            setFilter(f) {
+                this.filter = f;
+                ['all', 'pending', 'completed'].forEach(mode => {
+                    const el = document.getElementById(`filter-btn-${mode}`);
+                    if (mode === f) {
+                        el.className = 'flex-1 sm:flex-initial px-3.5 py-1.5 rounded-lg bg-cyan-500 text-slate-950 shadow-md font-bold transition';
+                    } else {
+                        el.className = 'flex-1 sm:flex-initial px-3.5 py-1.5 rounded-lg text-blue-200/70 hover:text-cyan-200 transition';
+                    }
+                });
+                this.renderList();
+            }
+
+            handleSearchInput(q) {
+                this.searchQuery = q;
+                this.renderList();
+            }
+
+            handleJumpSearch(q) {
+                this.renderJumpList(q);
+            }
+
+            render() {
+                const total = this.items.length;
+                const completed = this.items.filter(i => i.count >= this.targetPerPerson).length;
+                const totalFatiha = this.items.reduce((s, i) => s + i.count, 0);
+                const maxTarget = total * this.targetPerPerson;
+                const percent = maxTarget > 0 ? Math.min(Math.round((totalFatiha / maxTarget) * 100), 100) : 0;
+
+                document.getElementById('header-target-label').textContent = `${this.targetPerPerson} ഫാത്തിഹ`;
+                document.getElementById('completed-count-label').textContent = completed;
+                document.getElementById('total-fatiha-label').textContent = totalFatiha;
+                document.getElementById('max-fatiha-label').textContent = maxTarget;
+                document.getElementById('overall-progress-bar').style.width = `${percent}%`;
+
+                if (this.viewMode === 'single') {
+                    document.getElementById('single-view').classList.remove('hidden-el');
+                    document.getElementById('list-view').classList.add('hidden-el');
+                    this.renderSingle();
+                } else {
+                    document.getElementById('single-view').classList.add('hidden-el');
+                    document.getElementById('list-view').classList.remove('hidden-el');
+                    this.renderList();
+                }
+            }
+
+            renderSingle() {
+                const item = this.items[this.currentIndex];
+                if (!item) return;
+
+                document.getElementById('current-id-label').textContent = item.id;
+                document.getElementById('single-name-heading').textContent = item.name;
+                document.getElementById('single-count-display').textContent = item.count;
+                document.getElementById('single-target-display').textContent = this.targetPerPerson;
+
+                const offset = 264 - (Math.min(item.count / this.targetPerPerson, 1) * 264);
+                document.getElementById('ring-circle').style.strokeDashoffset = offset;
+
+                const compBtn = document.getElementById('single-complete-btn');
+                if (item.count >= this.targetPerPerson) {
+                    compBtn.className = 'w-full sm:w-auto px-4 h-14 rounded-2xl border text-xs font-bold transition flex items-center justify-center shrink-0 active:scale-95 shadow-lg bg-blue-500 text-slate-950 border-blue-400';
+                    compBtn.innerHTML = `✓ ${this.targetPerPerson} പൂർത്തിയായി`;
+                } else {
+                    compBtn.className = 'w-full sm:w-auto px-4 h-14 rounded-2xl border text-xs font-bold transition flex items-center justify-center shrink-0 active:scale-95 shadow-lg bg-blue-950/60 text-cyan-300 border-cyan-500/30';
+                    compBtn.innerHTML = `${this.targetPerPerson} ആക്കുക`;
+                }
+            }
+
+            renderList() {
+                const container = document.getElementById('list-container');
+                const q = this.searchQuery.toLowerCase();
+
+                const filtered = this.items.filter(item => {
+                    const matches = item.name.toLowerCase().includes(q) || item.id.toString().includes(q);
+                    if (!matches) return false;
+                    if (this.filter === 'completed') return item.count >= this.targetPerPerson;
+                    if (this.filter === 'pending') return item.count < this.targetPerPerson;
+                    return true;
+                });
+
+                if (filtered.length === 0) {
+                    container.innerHTML = `<div class="glass-card rounded-2xl p-8 text-center text-blue-200/60">തിരഞ്ഞ പേരിൽ ആളുകളെ കണ്ടെത്താനായില്ല.</div>`;
+                    return;
+                }
+
+                container.innerHTML = filtered.map(item => {
+                    const isDone = item.count >= this.targetPerPerson;
+                    const isEditing = this.editingId === item.id;
+                    const pct = Math.min((item.count / this.targetPerPerson) * 100, 100);
+
+                    return `
+                        <div class="glass-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-cyan-400/50 ${isDone ? 'border-blue-500/50 bg-blue-900/30' : 'border-cyan-500/20'}" onclick="app.selectPerson(${item.id})">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div class="flex items-start gap-3 flex-1">
+                                    <span class="w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 mt-1 shadow-md ${isDone ? 'bg-blue-500 text-slate-950' : 'bg-blue-950 text-cyan-300 border border-cyan-500/30'}">${item.id}</span>
+                                    <div class="flex-1">
+                                        ${!isEditing ? `
+                                            <div class="flex items-center gap-2 group">
+                                                <h3 class="text-lg md:text-2xl font-bold arabic-font text-cyan-100 leading-relaxed" dir="rtl">${item.name}</h3>
+                                                <button onclick="event.stopPropagation(); app.startEditItem(${item.id})" class="text-blue-400 hover:text-cyan-300 p-1">✏️</button>
+                                            </div>
+                                        ` : `
+                                            <div class="flex items-center gap-2 mt-1" onclick="event.stopPropagation()">
+                                                <input type="text" id="edit-input-${item.id}" value="${item.name}" dir="rtl" class="w-full px-3 py-1.5 bg-blue-950 border border-cyan-500/60 rounded-xl text-base arabic-font text-cyan-200">
+                                                <button onclick="app.saveItemEdit(${item.id}, document.getElementById('edit-input-${item.id}').value)" class="px-3 py-1.5 bg-cyan-500 text-slate-950 text-xs rounded-xl font-bold">സേവ്</button>
+                                                <button onclick="app.editingId=null; app.renderList()" class="px-2.5 py-1.5 bg-slate-800 text-slate-300 text-xs rounded-xl">റദ്ദാക്ക്</button>
+                                            </div>
+                                        `}
+                                        <div class="mt-2 flex items-center gap-2 max-w-xs">
+                                            <div class="flex-1 bg-blue-950/90 rounded-full h-2 overflow-hidden border border-blue-800/40">
+                                                <div class="h-full transition-all duration-300 rounded-full ${isDone ? 'bg-blue-400' : 'bg-gradient-to-r from-cyan-500 to-cyan-300'}" style="width: ${pct}%"></div>
+                                            </div>
+                                            <span class="text-xs text-blue-200/70 font-medium whitespace-nowrap"><strong class="${isDone ? 'text-cyan-300' : ''}">${item.count}</strong> / ${this.targetPerPerson}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 self-end md:self-center" onclick="event.stopPropagation()">
+                                    <button onclick="app.decrementItem(${item.id})" class="w-9 h-9 rounded-xl border border-blue-700/50 bg-blue-950 text-blue-200 font-bold hover:bg-blue-900">-</button>
+                                    <button onclick="app.incrementItem(${item.id})" class="px-3.5 h-9 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 font-bold text-xs shadow-md">+1 ഫാത്തിഹ</button>
+                                    <button onclick="app.toggleCompleteItem(${item.id})" class="px-3 h-9 rounded-xl text-xs font-semibold transition ${isDone ? 'bg-blue-500 text-slate-950 font-bold' : 'bg-blue-950/80 text-blue-200 border border-blue-700/50'}">${isDone ? '✓ ' + this.targetPerPerson : this.targetPerPerson + ' ആക്കുക'}</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            renderJumpList(q) {
+                const container = document.getElementById('jump-list-container');
+                const query = q.toLowerCase();
+                const filtered = this.items.filter(i => i.name.toLowerCase().includes(query) || i.id.toString().includes(query));
+
+                container.innerHTML = filtered.map(item => `
+                    <div onclick="app.selectPerson(${item.id}); app.closeJumpModal();" class="p-3 rounded-xl hover:bg-blue-900/80 cursor-pointer flex items-center justify-between transition border border-transparent hover:border-cyan-500/30 ${this.currentIndex === item.id - 1 ? 'bg-cyan-500/20 border-cyan-500/50' : 'bg-blue-950/40'}">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-xl bg-blue-900 text-cyan-300 font-bold text-xs flex items-center justify-center border border-cyan-500/30">${item.id}</span>
+                            <span class="arabic-font text-cyan-100 text-lg md:text-xl font-bold" dir="rtl">${item.name}</span>
+                        </div>
+                        <span class="text-xs text-cyan-300 font-semibold bg-blue-950 px-2.5 py-1 rounded-lg border border-cyan-500/20">${item.count}/${this.targetPerPerson}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        const app = new BadrCounterApp();
+    </script>
+</body>
+</html>
